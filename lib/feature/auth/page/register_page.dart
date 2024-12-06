@@ -33,7 +33,6 @@ class _RegisterPageState extends State<RegisterPage> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -48,10 +47,6 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Создать аккаунт',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
                 const SizedBox(height: 40),
                 _buildEmailField(),
                 const SizedBox(height: 20),
@@ -72,14 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return TextField(
       controller: _emailController,
       decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.grey[100],
         hintText: 'Email',
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
-        ),
-        prefixIcon: const Icon(Icons.email_outlined),
       ),
     );
   }
@@ -89,14 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
       controller: _passwordController,
       obscureText: true,
       decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.grey[100],
         hintText: 'Пароль',
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
-        ),
-        prefixIcon: const Icon(Icons.lock_outline),
       ),
     );
   }
@@ -106,14 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
       controller: _confirmPasswordController,
       obscureText: true,
       decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.grey[100],
-        hintText: 'Подтвердите пароль',
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
-        ),
-        prefixIcon: const Icon(Icons.lock_outline),
+        hintText: 'Повторите пароль',
       ),
     );
   }
@@ -128,15 +102,9 @@ class _RegisterPageState extends State<RegisterPage> {
             onPressed: state is AuthLoading
                 ? null
                 : () => _handleRegister(context),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
             child: state is AuthLoading
                 ? const CircularProgressIndicator(color: Colors.white)
-                : const Text('Зарегистрироваться', style: TextStyle(fontSize: 16)),
+                : const Text('Зарегистрироваться'),
           ),
         );
       },

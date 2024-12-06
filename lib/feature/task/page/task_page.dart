@@ -24,7 +24,7 @@ class TasksPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text('Мои задачи'),
+          title: const Text('ЗАДАЧИ:'),
           actions: [
             IconButton(
               icon: const Icon(Icons.settings),
@@ -49,12 +49,12 @@ class TasksPage extends StatelessWidget {
             } else if (state is TasksError) {
               return Center(child: Text(state.message));
             }
-            return const Center(child: Text('Нет задач'));
+            return const Center(child: Text('Пока здесь нет задачи :('));
           },
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => _showAddTaskDialog(context),
-          child: const Icon(Icons.add),
+          child: const Icon(Icons.task),
         ),
       ),
     );
@@ -75,7 +75,6 @@ class TasksPage extends StatelessWidget {
               controller: titleController,
               decoration: const InputDecoration(
                 labelText: 'Название',
-                border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
@@ -83,7 +82,6 @@ class TasksPage extends StatelessWidget {
               controller: descriptionController,
               decoration: const InputDecoration(
                 labelText: 'Описание',
-                border: OutlineInputBorder(),
               ),
               maxLines: 3,
             ),
@@ -136,7 +134,7 @@ class _TaskCard extends StatelessWidget {
           },
         ),
         trailing: IconButton(
-          icon: const Icon(Icons.delete, color: Colors.red),
+          icon: const Icon(Icons.delete),
           onPressed: () {
             context.read<TasksCubit>().deleteTask(task.id);
           },
